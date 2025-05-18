@@ -6,9 +6,7 @@ from operations import (
      copy_file,
      delete_path,
      count_files_in_dir,
-     find_files_in_dir,
-     add_date_to_files,
-     _add_date_to_filename
+     find_files_in_dir
 )
 
 
@@ -49,7 +47,7 @@ def test_delete_file_and_folder(self):
 
 def test_count_files_in_dir(self):
      count = count_files_in_dir(self.test_dir)
-     self.assertEqual(count, 2)  # test1.txt и sample.doc
+     self.assertEqual(count, 2)
 
 
 def test_find_files_in_dir(self):
