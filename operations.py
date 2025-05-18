@@ -16,7 +16,7 @@ def delete_path(path: str):
     elif os.path.isdir(path):
         shutil.rmtree(path)
     else:
-        raise FileNotFoundError(f"Путь не найден: {path}")
+        raise FileNotFoundError(f"Путь не найден : {path}")
 
 
 def count_files_in_dir(directory: str) -> int:
