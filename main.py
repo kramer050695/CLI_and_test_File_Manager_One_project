@@ -22,6 +22,15 @@ def main():
     parser_count = subparsers.add_parser('count', help='Подсчитать файлы в папке')
     parser_count.add_argument('directory', help='Путь к папке')
 
+    parser_find = subparsers.add_parser('find', help='Найти файлы по шаблону')
+    parser_find.add_argument('directory', help='Путь к папке')
+    parser_find.add_argument('pattern', help='Регулярное выражение для поиска')
+
+    # add_date команда
+    parser_date = subparsers.add_parser('add_date', help='Добавить дату в название файла')
+    parser_date.add_argument('path', help='Путь к файлу или папке')
+    parser_date.add_argument('--recursive', action='store_true', help='Обрабатывать все вложения')
+
     args = parser.parse_args()
 
     try:
@@ -34,6 +43,14 @@ def main():
         elif args.command == 'count':
             count = count_files_in_dir(args.directory)
             print(f"Общее количество файлов: {count}")
+        elif args.command == 'find':
+            results = find_files_in_dir(args.directory, args.pattern)
+            print("Найденные файлы:")
+            for file in results:
+                print(file)
+        elif args.command == 'add_date':
+            add_date_to_files(args.path, recursive=args.recursive)
+            print("Дата добавлена успешно.")
         else:
             print("Неизвестная команда")
             sys.exit(1)
